@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Book Library</h1>
+      <h3>add book to your list</h3>
+      <button class="show-btn btn">add a book</button>
+      <div class="val-form">Please fill up the form</div>
+      <form class="form">
+        <div>
+          <label for="title">Title</label>
+          <input type="text" id="title" class="input" />
+        </div>
+        <div>
+          <label for="author">Author</label>
+          <input type="text" id="author" class="input" />
+        </div>
+        <div>
+          <label for="pages">Pages</label>
+          <input type="number" id="pages" class="input" />
+        </div>
+        <div>
+          <label for="pages">Read</label>
+          <input type="checkbox" id="read" />
+        </div>
+        <button type="submit" class="submit btn">Submit</button>
+      </form>
+      <table class="list" cellspacing="0" cellpadding="0">
+        <tr>
+          <th>title</th>
+          <th>author</th>
+          <th>pages</th>
+          <th>read?</th>
+          <th>delete</th>
+        </tr>
+      </table>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
