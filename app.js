@@ -1,80 +1,86 @@
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+// instantiate Book class
+
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  // clear form fields function
+
+  clearInputs = (selectors) => {
+    selectors.forEach((selector) => (selector.value = ""));
+    this.read.checked = false;
+  };
+
+  // error message function
+
+  showError = (el, cl, sec) => {
+    el.classList.add(cl);
+    setTimeout(() => {
+      el.classList.remove(cl);
+    }, sec);
+  };
+
+  //  render  book
+
+  render = (book) => {
+    let readStatue = this.read.checked ? "yes" : "no";
+
+    table.innerHTML += `
+    <tr>
+    <td>${book.title}</td>
+    <td>${book.author}</td>
+    <td>${book.pages}</td>
+    <td>${readStatue}</td>
+    <td><button class="delete btn">Delete</button></td>
+  </tr>
+    `;
+  };
 }
 
-const arr = [];
 const form = document.querySelector(".form");
 const table = document.querySelector(".list");
 const inputs = document.querySelectorAll(".input");
 const showBtn = document.querySelector(".show-btn");
 const valForm = document.querySelector(".val-form");
 
-const showForm = () => {
-  form.classList.toggle("active");
-};
+// add book to the list
 
-function addtbookList() {
+const addtbookList = () => {
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
   const read = document.querySelector("#read");
-  let book = new Book(title, author, pages, read);
-  arr.push(book);
-}
+  const book = new Book(title, author, pages, read);
 
-const checkVal = () => {
-  inputArr = [];
-  inputs.forEach((input) => {
-    if (input.value !== "") {
-      inputArr.push(input.value);
-    }
-  });
-  if (inputArr.length === 3) {
-    render();
+  if (title === "" || author === "" || pages === "") {
+    book.showError(valForm, "active", 2000);
   } else {
-    valForm.classList.add("active");
-    setTimeout(() => {
-      valForm.classList.remove("active");
-    }, 1000);
+    book.render(book);
+    book.clearInputs(inputs);
   }
 };
 
-const render = () => {
-  let lastBook = arr[arr.length - 1];
-  let readStatue = read.checked ? "yes" : "no";
+//  event listener for form show and hide
 
-  table.innerHTML += `
-  <tr>
-  <td>${lastBook.title}</td>
-  <td>${lastBook.author}</td>
-  <td>${lastBook.pages}</td>
-  <td>${readStatue}</td>
-  <td><button class="delete btn">Delete</button></td>
-</tr>
-  `;
-};
+showBtn.addEventListener("click", () => {
+  form.classList.toggle("active");
+});
 
-const clearInputs = () => {
-  inputs.forEach((input) => (input.value = ""));
-  read.checked = false;
-};
+// event listener for delete book from the list
 
-const removeBook = (e) => {
+table.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete")) {
     e.target.parentElement.parentElement.remove();
   }
-};
+});
 
-showBtn.addEventListener("click", showForm);
-
-table.addEventListener("click", removeBook);
+//  event listener add book to the list
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   addtbookList();
-  checkVal();
-  clearInputs();
 });

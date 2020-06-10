@@ -11,6 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
   line-height: 1.5;
 }
 
@@ -21,16 +22,18 @@ body {
   border-radius: 15px;
   cursor: pointer;
   outline: none;
-}
-
-.delete {
-  background: blue;
+  background: #fff;
+  color: #16a085;
 }
 
 .container {
-  margin: 2rem;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 3%;
   width: 600px;
   text-align: center;
+  background: #34495e;
+  color: #1abc9c;
 }
 
 .container .active {
@@ -38,19 +41,23 @@ body {
 }
 
 .container h1 {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
 }
 
+.container h3 {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
 .container .show-btn {
-  background: gray;
   font-size: 1.1rem;
 }
 
 .val-form {
   display: none;
-  color: red;
-  border: 2px solid red;
+  color: #fff;
+  background: #e74c3c;
   padding: 1rem;
   width: 60%;
   margin: auto;
@@ -69,7 +76,7 @@ body {
 
 .container .form input {
   border: none;
-  background: gray;
+  background: #ecf0f1;
   width: 100%;
   padding: 0.5rem;
   border-radius: 5px;
@@ -79,6 +86,7 @@ body {
 .container .form div:nth-child(4) {
   display: flex;
   width: 100px;
+  justify-content: center;
 }
 
 .container .form div:nth-child(4) input {
@@ -87,29 +95,27 @@ body {
 }
 
 .container .form .submit {
-  background: gray;
+  font-size: 1.2rem;
+  padding: 0.5rem 1.2rem;
 }
 
 .container .list {
   text-align: center;
-  border: none;
   margin: 1rem 0;
   width: 100%;
 }
 
-.container .list tr {
-  background: gray;
-}
-
 .container .list th {
-  background: gray;
-}
-
-.container .list td {
-  background: red;
-}
-
-.container .list th,
-.container .list td {
+  background: #2c3e50;
   padding: 1rem;
+}
+
+.container .list td {
+  background: #fff;
+  color: #16a085;
+}
+
+.container .list .delete {
+  background: #1abc9c;
+  color: #fff;
 }
